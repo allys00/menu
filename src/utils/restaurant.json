@@ -1,0 +1,521 @@
+{
+    "numericalId": 1,
+    "geoLat": "-22.9829760000",
+    "openingTimes": null,
+    "image": [
+        {
+            "url": "http://images.onyo.com/wz96lSQBOwkiLVJqstCQt4aNMLI=/229x4:764x540/fit-in/240x240/https://onyo.s3.amazonaws.com/picture/8563e2759ca64e57991954c805e160ca.jpg",
+            "width": 535,
+            "repeatable": false,
+            "context": "company-thumbnail-small",
+            "height": 536
+        },
+        {
+            "url": "http://images.onyo.com/fvJ8j8WX_I1ZFFjJ0lmYETMHCv0=/0x67:778x293/fit-in/1240x360/https://onyo.s3.amazonaws.com/picture/448ea95e358545f5ac51b43b25e206fb.jpg",
+            "width": 778,
+            "repeatable": false,
+            "context": "aggregator-company-list",
+            "height": 226
+        },
+        {
+            "url": "http://images.onyo.com/KpYiVBFxYNq_Se4QmzNv9_hiIPA=/182x76:960x511/fit-in/912x510/https://onyo.s3.amazonaws.com/picture/83a3a54221484d69872cf90927b3a4ae.jpg",
+            "width": 778,
+            "repeatable": false,
+            "context": "company-main",
+            "height": 435
+        },
+        {
+            "url": "http://images.onyo.com/iR3p7zQILgjLZn9UEqHcj1MozFc=/0x42:960x960/fit-in/408x390/https://onyo.s3.amazonaws.com/picture/c4243080c1fd4831bbfb86355e861bcb.jpg",
+            "width": 960,
+            "repeatable": false,
+            "context": "company-thumbnail-medium",
+            "height": 918
+        }
+    ],
+    "address": "Rua Bar\u00e3o da Torre, 446 Ipanema - Rio de Janeiro, Rio de Janeiro - 22411-002",
+    "id": "https://api.staging.onyo.com/v1/mobile/company/1",
+    "categories": [
+        {
+            "numericalId": 73,
+            "name": "Dia dos namorados",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/73",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/AADqXq4_LZDkOrGwxPk1fna5Tmc=/127x14:330x230/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/7ea92406f7c549b386c0d2ce30a706ce.png",
+                    "width": 203,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 216
+                }
+            ],
+            "order": 16
+        },
+        {
+            "numericalId": 1,
+            "name": "Entradas",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/1",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/4XchhmEioWX3pEmtRNjXvYDeiCs=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/49252cbe317a41039e79740449b38dfb.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 14
+        },
+        {
+            "numericalId": 76,
+            "name": "Sugest\u00f5es antiga",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/76",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/7FkFxyS9ElRfyHIVf0FUgbmOffg=/0x0:450x479/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/6045c5546b2846cc9c3404d1b51cc090.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 479
+                }
+            ],
+            "order": 9
+        },
+        {
+            "numericalId": 4,
+            "name": "Tortas e Quiches",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/4",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/6obvdkC9VfQIG0G66EtyQZA1NYs=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/7c32af669b3d40f6b535b751648686b3.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 15
+        },
+        {
+            "numericalId": 3,
+            "name": "Grelhados",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/3",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/0kS6pa4h6vaY9y2Y1LXsSmV3i4w=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/6b1763d251d64a0ca781ad2cbe220850.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 20
+        },
+        {
+            "numericalId": 56,
+            "name": "Produtos",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/56",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/HqJtIls_iFR83LqBkybr0YONGQo=/0x0:450x479/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/eeebe0252b8a4c6ba96626fded670903.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 479
+                }
+            ],
+            "order": 28
+        },
+        {
+            "numericalId": 373,
+            "name": "Pra come\u00e7ar bem",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/373",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/yfP0veZZJq4IBOhDaPTEDQ0FvRo=/130x0:724x633/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/7c57f2330c9247ef95bc4cdd4df889f3.jpg",
+                    "width": 594,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 633
+                }
+            ],
+            "order": 13
+        },
+        {
+            "numericalId": 28,
+            "name": "Sucos e Bebidas",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/28",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/57DlOPR6LofdyACAcEsV2JkZ0U0=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/3295c2065362401a918301d252bcafa4.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 26
+        },
+        {
+            "numericalId": 75,
+            "name": "Inverno Gula Gula 2017",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/75",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/7_tgOcxlhoLfL1N6vmeCeulrfPA=/0x0:450x479/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/49ee589f9d2e45768099c192384edb70.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 479
+                }
+            ],
+            "order": 29
+        },
+        {
+            "numericalId": 26,
+            "name": "Massas",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/26",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/Ao5NsKjBsg6cQjIJAUYKPmZYbOo=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/d106c0ee7549416ab4394a21970c34a9.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 21
+        },
+        {
+            "numericalId": 227,
+            "name": "Sugest\u00f5es antiga",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/227",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/n2MV_YA6dUvU0HI9k1Tzco8w3A8=/0x0:450x479/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/d37d6c6b45cc477480d720579787153b.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 479
+                }
+            ],
+            "order": 10
+        },
+        {
+            "numericalId": 519,
+            "name": "Sugest\u00f5es",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/519",
+            "image": null,
+            "order": 11
+        },
+        {
+            "numericalId": 596,
+            "name": "Sugest\u00e3o",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/596",
+            "image": null,
+            "order": 12
+        },
+        {
+            "numericalId": 812,
+            "name": "Grelhados - Prote\u00ednas + Molhos",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/812",
+            "image": null,
+            "order": 6
+        },
+        {
+            "numericalId": 808,
+            "name": "Para Dividir",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/808",
+            "image": null,
+            "order": 2
+        },
+        {
+            "numericalId": 346,
+            "name": "Picadinho",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/346",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/2LI4MqdAmao2R43vMtX9AwzdxeI=/0x0:450x479/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/703a03eb14814c97831548f095e629c3.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 479
+                }
+            ],
+            "order": 17
+        },
+        {
+            "numericalId": 5,
+            "name": "Saladas Tradicionais",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/5",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/LcuX3SFcXtRZB9xbopfL7NjdNbs=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/2d7b0782134945d8a92e8b76f6a1dc37.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 19
+        },
+        {
+            "numericalId": 2,
+            "name": "Saladas Especiais",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/2",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/1fpiLNUvL6aWOckHElQbY9_tqt4=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/2ec1e853857d4858b8d375263898b112.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 18
+        },
+        {
+            "numericalId": 6,
+            "name": "Executivos Gula Gula",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/6",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/ED3wzFgBy36bOXxiRf0csRADoXQ=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/0b2c87310a194be0857b72100fa5822e.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 1
+        },
+        {
+            "numericalId": 809,
+            "name": "Para Toda Hora",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/809",
+            "image": null,
+            "order": 3
+        },
+        {
+            "numericalId": 810,
+            "name": "Saladas",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/810",
+            "image": null,
+            "order": 4
+        },
+        {
+            "numericalId": 813,
+            "name": "Acompanhamentos",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/813",
+            "image": null,
+            "order": 7
+        },
+        {
+            "numericalId": 811,
+            "name": "Adds",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/811",
+            "image": null,
+            "order": 5
+        },
+        {
+            "numericalId": 27,
+            "name": "Card\u00e1pio Infantil",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/27",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/0QH83YsXZyS5F4mlXWsRlocMtCU=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/a4f0decf5c6f475e9ecb8eff5d6c0985.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 22
+        },
+        {
+            "numericalId": 815,
+            "name": "Especialidades",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/815",
+            "image": null,
+            "order": 23
+        },
+        {
+            "numericalId": 30,
+            "name": "Gula Caf\u00e9",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/30",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/er8KYxvPkQkdezK4XlkGa3loRYU=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/a8dfb503f4784e8b9b135a980c7c85d9.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 27
+        },
+        {
+            "numericalId": 29,
+            "name": "Sobremesas",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/29",
+            "image": [
+                {
+                    "url": "http://images.onyo.com/7q0GZQdVKR5ZJbyThln16Oiz9Q8=/0x0:450x480/fit-in/450x480/https://onyo.s3.amazonaws.com/picture/3b16a0c15175484ca51d422799be709e.png",
+                    "width": 450,
+                    "repeatable": false,
+                    "context": "category-background",
+                    "height": 480
+                }
+            ],
+            "order": 25
+        },
+        {
+            "numericalId": 816,
+            "name": "Veganos",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/816",
+            "image": null,
+            "order": 24
+        },
+        {
+            "numericalId": 814,
+            "name": "Acompanhamentos Especiais",
+            "parent": null,
+            "brand": "https://api.staging.onyo.com/v1/mobile/brand/1",
+            "id": "https://api.staging.onyo.com/v1/mobile/category/814",
+            "image": null,
+            "order": 8
+        }
+    ],
+    "displayName": "Ipanema",
+    "name": "Gula Gula Ipanema",
+    "menu": "https://api.staging.onyo.com/v1/mobile/brand/1",
+    "menus": [
+        {
+            "numericalId": 1,
+            "id": "https://api.staging.onyo.com/v1/mobile/menu/1",
+            "categories": [
+                "https://api.staging.onyo.com/v1/mobile/category/73",
+                "https://api.staging.onyo.com/v1/mobile/category/1",
+                "https://api.staging.onyo.com/v1/mobile/category/76",
+                "https://api.staging.onyo.com/v1/mobile/category/4",
+                "https://api.staging.onyo.com/v1/mobile/category/3",
+                "https://api.staging.onyo.com/v1/mobile/category/56",
+                "https://api.staging.onyo.com/v1/mobile/category/373",
+                "https://api.staging.onyo.com/v1/mobile/category/28",
+                "https://api.staging.onyo.com/v1/mobile/category/75",
+                "https://api.staging.onyo.com/v1/mobile/category/26",
+                "https://api.staging.onyo.com/v1/mobile/category/227",
+                "https://api.staging.onyo.com/v1/mobile/category/519",
+                "https://api.staging.onyo.com/v1/mobile/category/596",
+                "https://api.staging.onyo.com/v1/mobile/category/812",
+                "https://api.staging.onyo.com/v1/mobile/category/808",
+                "https://api.staging.onyo.com/v1/mobile/category/346",
+                "https://api.staging.onyo.com/v1/mobile/category/5",
+                "https://api.staging.onyo.com/v1/mobile/category/2",
+                "https://api.staging.onyo.com/v1/mobile/category/6",
+                "https://api.staging.onyo.com/v1/mobile/category/809",
+                "https://api.staging.onyo.com/v1/mobile/category/810",
+                "https://api.staging.onyo.com/v1/mobile/category/813",
+                "https://api.staging.onyo.com/v1/mobile/category/811",
+                "https://api.staging.onyo.com/v1/mobile/category/27",
+                "https://api.staging.onyo.com/v1/mobile/category/815",
+                "https://api.staging.onyo.com/v1/mobile/category/30",
+                "https://api.staging.onyo.com/v1/mobile/category/29",
+                "https://api.staging.onyo.com/v1/mobile/category/816",
+                "https://api.staging.onyo.com/v1/mobile/category/814"
+            ]
+        },
+        {
+            "numericalId": 2,
+            "id": "https://api.staging.onyo.com/v1/mobile/menu/2",
+            "categories": [
+                "https://api.staging.onyo.com/v1/mobile/category/73",
+                "https://api.staging.onyo.com/v1/mobile/category/1",
+                "https://api.staging.onyo.com/v1/mobile/category/76",
+                "https://api.staging.onyo.com/v1/mobile/category/4",
+                "https://api.staging.onyo.com/v1/mobile/category/3",
+                "https://api.staging.onyo.com/v1/mobile/category/56",
+                "https://api.staging.onyo.com/v1/mobile/category/373",
+                "https://api.staging.onyo.com/v1/mobile/category/28",
+                "https://api.staging.onyo.com/v1/mobile/category/75",
+                "https://api.staging.onyo.com/v1/mobile/category/26",
+                "https://api.staging.onyo.com/v1/mobile/category/227",
+                "https://api.staging.onyo.com/v1/mobile/category/519",
+                "https://api.staging.onyo.com/v1/mobile/category/596",
+                "https://api.staging.onyo.com/v1/mobile/category/812",
+                "https://api.staging.onyo.com/v1/mobile/category/808",
+                "https://api.staging.onyo.com/v1/mobile/category/346",
+                "https://api.staging.onyo.com/v1/mobile/category/5",
+                "https://api.staging.onyo.com/v1/mobile/category/2",
+                "https://api.staging.onyo.com/v1/mobile/category/6",
+                "https://api.staging.onyo.com/v1/mobile/category/809",
+                "https://api.staging.onyo.com/v1/mobile/category/810",
+                "https://api.staging.onyo.com/v1/mobile/category/813",
+                "https://api.staging.onyo.com/v1/mobile/category/811",
+                "https://api.staging.onyo.com/v1/mobile/category/27",
+                "https://api.staging.onyo.com/v1/mobile/category/815",
+                "https://api.staging.onyo.com/v1/mobile/category/30",
+                "https://api.staging.onyo.com/v1/mobile/category/29",
+                "https://api.staging.onyo.com/v1/mobile/category/816",
+                "https://api.staging.onyo.com/v1/mobile/category/814"
+            ]
+        }
+    ],
+    "geoLon": "-43.2077172000",
+    "brand": "https://api.staging.onyo.com/v1/mobile/brand/1"
+}
