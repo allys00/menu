@@ -8,6 +8,10 @@
     padding: 10px;
     border: 1px solid #ccc;
     margin: 5px;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    
     img {
         width: 50px;
     }
@@ -15,6 +19,7 @@
         height: 100%;
         width: calc(100% - 50px);
         padding: 0 5px;
+        cursor: pointer;
         .name {
             font-size: 14px;
             white-space: nowrap;

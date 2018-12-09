@@ -7,13 +7,17 @@
   height: 50px;
   padding: 10px;
   border: 1px solid #ccc;
-  margin: 5px; }
+  margin: 5px;
+  position: relative;
+  z-index: 1;
+  background-color: #fff; }
   .card-item-content img {
     width: 50px; }
   .card-item-content .card-item-info {
     height: 100%;
     width: calc(100% - 50px);
-    padding: 0 5px; }
+    padding: 0 5px;
+    cursor: pointer; }
     .card-item-content .card-item-info .name {
       font-size: 14px;
       white-space: nowrap;

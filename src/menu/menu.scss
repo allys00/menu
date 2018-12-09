@@ -1,5 +1,17 @@
 .menu-container {
     padding: 25px;
+    .line {
+        width: 50%;
+        height: 1px;
+        position: absolute;
+        background: #ccc;
+        left: 0;
+        z-index: 0;
+        &.right {
+            left: unset;
+            right: 0;
+        }
+    }
     table {
         width: 100%;
         tr {
@@ -15,6 +27,7 @@
             }
             .column {
                 display: flex;
+                position: relative;
                 justify-content: center;
                 flex-direction: column;
                 align-items: center;
@@ -25,19 +38,130 @@
                 display: flex;
                 flex-direction: row;
             }
+            .loading {
+                width: 75%;
+                .column {
+                    width: 33%;
+                    :first-child {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: center;
+                        .css-19bon8n {
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
             .menuItems {
                 display: flex;
                 flex-direction: row;
+                .line-right {
+                    position: absolute;
+                    border-left: 1px solid #ccc;
+                    height: 100%;
+                    left: 0;
+                }
+                &:first-child {
+                    .line-right {
+                        height: 50%;
+                        bottom: 0;
+                    }
+                }
+                &:last-child {
+                    .line-right {
+                        height: 50%;
+                        top: 0;
+                    }
+                }
                 .column {
                     width: 33%;
                 }
             }
-            .choose {
-                width: 66% !important;
+        }
+        .chooses {
+            width: 66% !important;
+            .choose-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                position: relative;
+                width: 100%;
                 .choose-item {
+                    width: 50%;
                     display: flex;
-                    flex-direction: row;
-                    align-items: center;
+                    justify-content: center;
+                }
+                .line {
+                    width: 50%;
+                    &.right {
+                        right: unset;
+                    }
+                }
+                .line-right {
+                    position: absolute;
+                    border-left: 1px solid #ccc;
+                    height: 100% !important;
+                    left: 0;
+                }
+                &:first-child {
+                    .line-right {
+                        height: 50% !important;
+                        bottom: 0;
+                        top: unset;
+                    }
+                    &:last-child {
+                        .line-right {
+                            display: none;
+                        }
+                    }
+                }
+                &:last-child {
+                    .line-right {
+                        height: 50% !important;
+                        top: 0;
+                        bottom: unset;
+                    }
+                }
+            }
+        }
+        .simples {
+            position: relative;
+            width: 50% !important;
+            .simple-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                position: relative;
+                .line {
+                    width: 50%;
+                }
+                .line-right-simple {
+                    position: absolute;
+                    border-left: 1px solid #ccc;
+                    height: 100% !important;
+                    left: 0;
+                }
+                &:first-child {
+                    .line-right-simple {
+                        height: 50% !important;
+                        bottom: 0;
+                        top: unset;
+                    }
+                    &:last-child {
+                        .line-right-simple {
+                            display: none;
+                        }
+                    }
+                }
+                &:last-child {
+                    .line-right-simple {
+                        height: 50% !important;
+                        top: 0;
+                        bottom: unset;
+                    }
                 }
             }
         }

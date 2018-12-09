@@ -1,5 +1,15 @@
 .menu-container {
   padding: 25px; }
+  .menu-container .line {
+    width: 50%;
+    height: 1px;
+    position: absolute;
+    background: #ccc;
+    left: 0;
+    z-index: 0; }
+    .menu-container .line.right {
+      left: unset;
+      right: 0; }
   .menu-container table {
     width: 100%; }
     .menu-container table tr {
@@ -13,6 +23,7 @@
         width: 25%; }
       .menu-container table tr .column {
         display: flex;
+        position: relative;
         justify-content: center;
         flex-direction: column;
         align-items: center;
@@ -21,14 +32,88 @@
       .menu-container table tr .row {
         display: flex;
         flex-direction: row; }
+      .menu-container table tr .loading {
+        width: 75%; }
+        .menu-container table tr .loading .column {
+          width: 33%; }
+          .menu-container table tr .loading .column :first-child {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center; }
+            .menu-container table tr .loading .column :first-child .css-19bon8n {
+              margin-bottom: 5px; }
       .menu-container table tr .menuItems {
         display: flex;
         flex-direction: row; }
+        .menu-container table tr .menuItems .line-right {
+          position: absolute;
+          border-left: 1px solid #ccc;
+          height: 100%;
+          left: 0; }
+        .menu-container table tr .menuItems:first-child .line-right {
+          height: 50%;
+          bottom: 0; }
+        .menu-container table tr .menuItems:last-child .line-right {
+          height: 50%;
+          top: 0; }
         .menu-container table tr .menuItems .column {
           width: 33%; }
-      .menu-container table tr .choose {
-        width: 66% !important; }
-        .menu-container table tr .choose .choose-item {
+    .menu-container table .chooses {
+      width: 66% !important; }
+      .menu-container table .chooses .choose-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        width: 100%; }
+        .menu-container table .chooses .choose-container .choose-item {
+          width: 50%;
           display: flex;
-          flex-direction: row;
-          align-items: center; }
+          justify-content: center; }
+        .menu-container table .chooses .choose-container .line {
+          width: 50%; }
+          .menu-container table .chooses .choose-container .line.right {
+            right: unset; }
+        .menu-container table .chooses .choose-container .line-right {
+          position: absolute;
+          border-left: 1px solid #ccc;
+          height: 100% !important;
+          left: 0; }
+        .menu-container table .chooses .choose-container:first-child .line-right {
+          height: 50% !important;
+          bottom: 0;
+          top: unset; }
+        .menu-container table .chooses .choose-container:first-child:last-child .line-right {
+          display: none; }
+        .menu-container table .chooses .choose-container:last-child .line-right {
+          height: 50% !important;
+          top: 0;
+          bottom: unset; }
+    .menu-container table .simples {
+      position: relative;
+      width: 50% !important; }
+      .menu-container table .simples .simple-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: relative; }
+        .menu-container table .simples .simple-item .line {
+          width: 50%; }
+        .menu-container table .simples .simple-item .line-right-simple {
+          position: absolute;
+          border-left: 1px solid #ccc;
+          height: 100% !important;
+          left: 0; }
+        .menu-container table .simples .simple-item:first-child .line-right-simple {
+          height: 50% !important;
+          bottom: 0;
+          top: unset; }
+        .menu-container table .simples .simple-item:first-child:last-child .line-right-simple {
+          display: none; }
+        .menu-container table .simples .simple-item:last-child .line-right-simple {
+          height: 50% !important;
+          top: 0;
+          bottom: unset; }

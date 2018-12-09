@@ -27,7 +27,6 @@ class Menu extends Component {
   render() {
     const { menu } = this.props;
     const { openedCategories, loadingGetRestaurant } = menu;
-    console.log(openedCategories)
     openedCategories.sort((a, b) => a.category.order > b.category.order ? 1 : a.category.order < b.category.order ? -1 : 0)
     return loadingGetRestaurant ?
       <p>...Loading</p> :
@@ -43,6 +42,7 @@ class Menu extends Component {
             {openedCategories.map(({ category, menuItems, isOpen, isLoading }, index) => (
               <tr key={index} >
                 <td className="column" onClick={() => this.handleCategory(openedCategories[index])}>
+                  {(isOpen && !isLoading) && <div className="line right"></div>}
                   <CardItem
                     key={index}
                     name={category.name}
@@ -50,7 +50,7 @@ class Menu extends Component {
                     image={category.image ? category.image[0].url : undefined} type="category" />
                 </td>
                 {isOpen && (isLoading ? (
-                  <td className="row">
+                  <td className="row loading">
                     <div className="column">
                       <Skeleton count={3} width={200} />
                     </div>
@@ -62,31 +62,45 @@ class Menu extends Component {
                     </div>
                   </td>
                 ) :
-                  (<td colSpan="3" style={{ width: "100%" }} >
+                  (<td colSpan="3" style={{ width: "75%" }} >
                     {menuItems.map(({ name, image, fullDescription, products }, indexMenuItems) => (
                       <div className="menuItems" key={indexMenuItems} >
                         <div className="column items">
+                          <div className="line"></div>
+                          {products.length > 0 &&
+                            <div className="line right"></div>
+                          }
+                          <span className="line-right" />
                           <CardItem
                             loading={true}
                             name={name}
                             description={fullDescription}
                             image={image && image.length > 0 ? image[0].url : undefined} type={product_type.MENU_ITEM} />
                         </div>
-                        <div className="column choose">
+                        <div className="column chooses">
                           {products.map(({ name, image, products, maximumChoices, minimumChoices }, indexChoose) => (
-                            <div className="choose-item" key={indexChoose}>
-                              <CardItem
-                                name={name}
-                                description={`min: ${minimumChoices} - max: ${maximumChoices}`}
-                                image={image && image.length > 0 ? image[0].url : undefined} type={product_type.CHOOSABLE} />
-                              <div className="column simple">
-                                {products.map(({ name, image, fullDescription }, indexSimple) => (
-                                  <CardItem
-                                    key={indexSimple}
-                                    name={name}
-                                    description={fullDescription}
-                                    image={image && image.length > 0 ? image[0].url : undefined} type={product_type.SIMPLE} />
+                            <div
+                              key={indexChoose}
+                              className="choose-container">
+                              <div className="line"></div>
 
+                              <span className="line-right" />
+                              <div className="choose-item">
+                                <CardItem
+                                  name={name}
+                                  description={`min: ${minimumChoices} - max: ${maximumChoices}`}
+                                  image={image && image.length > 0 ? image[0].url : undefined} type={product_type.CHOOSABLE} />
+                              </div>
+                              <div className="column simples">
+                                {products.map(({ name, image, fullDescription }, indexSimple) => (
+                                  <div className="simple-item" key={indexSimple}>
+                                    <div className="line"></div>
+                                    <span className="line-right-simple" />
+                                    <CardItem
+                                      name={name}
+                                      description={fullDescription}
+                                      image={image && image.length > 0 ? image[0].url : undefined} type={product_type.SIMPLE} />
+                                  </div>
                                 ))}
                               </div>
                             </div>
