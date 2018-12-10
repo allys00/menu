@@ -1,5 +1,4 @@
 .menu-container {
-    padding: 25px;
     .line {
         width: 50%;
         height: 1px;
@@ -12,156 +11,153 @@
             right: 0;
         }
     }
-    table {
-        width: 100%;
-        tr {
-            display: flex;
-            border-bottom: 1px solid #ccc;
-            &.title {
-                justify-content: space-around;
-                margin-bottom: 20px;
-                border-bottom: 0;
-            }
-            th {
-                width: 25%;
-                min-width: 230px;
-            }
-            .column {
+    .table {
+        display: block;
+        height: calc(100vh - 70px);
+        overflow: auto;
+        table {
+            width: 100%;
+            tr {
                 display: flex;
-                position: relative;
-                justify-content: center;
-                flex-direction: column;
-                align-items: center;
-                width: 25%;
-                min-width: 225px;
-            }
-            .row {
-                display: flex;
-                flex-direction: row;
-            }
-            .loading {
-                width: 75%;
+                border-bottom: 1px solid #ccc;
                 .column {
-                    width: 33%;
-                    :first-child {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-around;
-                        align-items: center;
-                        .css-19bon8n {
-                            margin-bottom: 5px;
+                    display: flex;
+                    position: relative;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 25%;
+                    min-width: 225px;
+                }
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                }
+                .loading {
+                    width: 75%;
+                    .column {
+                        width: 33%;
+                        :first-child {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-around;
+                            align-items: center;
+                            .css-19bon8n {
+                                margin-bottom: 5px;
+                            }
                         }
                     }
                 }
-            }
-            .menuItems {
-                display: flex;
-                flex-direction: row;
-                .line-right {
-                    position: absolute;
-                    border-left: 1px solid #ccc;
-                    height: 100%;
-                    left: 0;
-                }
-                &:first-child {
-                    .line-right {
-                        height: 50%;
-                        bottom: 0;
-                    }
-                }
-                &:last-child {
-                    .line-right {
-                        height: 50%;
-                        top: 0;
-                    }
-                }
-                .column {
-                    width: 33%;
-                }
-            }
-        }
-        .chooses {
-            width: 66% !important;
-            .choose-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                position: relative;
-                width: 100%;
-                .choose-item {
-                    width: 50%;
+                .menuItems {
                     display: flex;
-                    justify-content: center;
-                }
-                .line {
-                    width: 50%;
-                    &.right {
-                        right: unset;
-                    }
-                }
-                .line-right {
-                    position: absolute;
-                    border-left: 1px solid #ccc;
-                    height: 100% !important;
-                    left: 0;
-                }
-                &:first-child {
+                    flex-direction: row;
+                    transition: 1s;
                     .line-right {
-                        height: 50% !important;
-                        bottom: 0;
-                        top: unset;
+                        position: absolute;
+                        border-left: 1px solid #ccc;
+                        height: 100%;
+                        left: 0;
+                    }
+                    &:first-child {
+                        .line-right {
+                            height: 50%;
+                            bottom: 0;
+                        }
                     }
                     &:last-child {
                         .line-right {
-                            display: none;
+                            height: 50%;
+                            top: 0;
                         }
                     }
-                }
-                &:last-child {
-                    .line-right {
-                        height: 50% !important;
-                        top: 0;
-                        bottom: unset;
+                    .column {
+                        width: 33%;
                     }
                 }
             }
-        }
-        .simples {
-            position: relative;
-            width: 50% !important;
-            .simple-item {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                position: relative;
-                .line {
-                    width: 50%;
-                }
-                .line-right-simple {
-                    position: absolute;
-                    border-left: 1px solid #ccc;
-                    height: 100% !important;
-                    left: 0;
-                }
-                &:first-child {
-                    .line-right-simple {
-                        height: 50% !important;
-                        bottom: 0;
-                        top: unset;
+            .chooses {
+                width: 66% !important;
+                .choose-container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    position: relative;
+                    width: 100%;
+                    .choose-item {
+                        width: 50%;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .line {
+                        width: 50%;
+                        &.right {
+                            right: unset;
+                        }
+                    }
+                    .line-right {
+                        position: absolute;
+                        border-left: 1px solid #ccc;
+                        height: 100% !important;
+                        left: 0;
+                    }
+                    &:first-child {
+                        .line-right {
+                            height: 50% !important;
+                            bottom: 0;
+                            top: unset;
+                        }
+                        &:last-child {
+                            .line-right {
+                                display: none;
+                            }
+                        }
                     }
                     &:last-child {
-                        .line-right-simple {
-                            display: none;
+                        .line-right {
+                            height: 50% !important;
+                            top: 0;
+                            bottom: unset;
                         }
                     }
                 }
-                &:last-child {
+            }
+            .simples {
+                position: relative;
+                width: 50% !important;
+                .simple-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    position: relative;
+                    .line {
+                        width: 50%;
+                    }
                     .line-right-simple {
-                        height: 50% !important;
-                        top: 0;
-                        bottom: unset;
+                        position: absolute;
+                        border-left: 1px solid #ccc;
+                        height: 100% !important;
+                        left: 0;
+                    }
+                    &:first-child {
+                        .line-right-simple {
+                            height: 50% !important;
+                            bottom: 0;
+                            top: unset;
+                        }
+                        &:last-child {
+                            .line-right-simple {
+                                display: none;
+                            }
+                        }
+                    }
+                    &:last-child {
+                        .line-right-simple {
+                            height: 50% !important;
+                            top: 0;
+                            bottom: unset;
+                        }
                     }
                 }
             }

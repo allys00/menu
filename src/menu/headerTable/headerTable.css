@@ -1,0 +1,14 @@
+ul {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  border-bottom: 0;
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 2px solid #ccc; }
+  ul li {
+    width: 25%;
+    min-width: 230px;
+    text-align: center; }

@@ -14,6 +14,16 @@
     img {
         width: 50px;
     }
+    .actions {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 7px 2px;
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+    }
     .card-item-info {
         height: 100%;
         width: calc(100% - 50px);

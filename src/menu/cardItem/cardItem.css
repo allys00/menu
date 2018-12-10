@@ -13,6 +13,14 @@
   background-color: #fff; }
   .card-item-content img {
     width: 50px; }
+  .card-item-content .actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 7px 2px; }
+    .card-item-content .actions:hover {
+      cursor: pointer;
+      transform: scale(1.2); }
   .card-item-content .card-item-info {
     height: 100%;
     width: calc(100% - 50px);
