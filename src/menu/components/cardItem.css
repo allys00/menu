@@ -17,10 +17,10 @@
     height: 100%;
     width: calc(100% - 50px);
     padding: 0 5px;
+    overflow: hidden;
     cursor: pointer; }
     .card-item-content .card-item-info .name {
       font-size: 14px;
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
     .card-item-content .card-item-info .description {
@@ -46,3 +46,6 @@
       .card-item-content .card-item-info.choosable .description {
         align-self: flex-end;
         font-size: 12px; }
+
+.tooltip-card-item {
+  width: 220px; }

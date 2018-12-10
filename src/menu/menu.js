@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Skeleton from "react-loading-skeleton";
+import ReactTooltip from 'react-tooltip'
+
 import { getRestaurant, dismemberCategory, changeOpenedCategories } from './menu.actions';
 import CardItem from './components/cardItem';
 
@@ -74,8 +76,14 @@ class Menu extends Component {
                           <CardItem
                             loading={true}
                             name={name}
+                            descriptionInTooltip={true}
                             description={fullDescription}
                             image={image && image.length > 0 ? image[0].url : undefined} type={product_type.MENU_ITEM} />
+                          <ReactTooltip
+                            place="bottom"
+                            effect="solid"
+                            html={true}
+                            className="tooltip-card-item " />
                         </div>
                         <div className="column chooses">
                           {products.map(({ name, image, products, maximumChoices, minimumChoices }, indexChoose) => (
@@ -98,6 +106,7 @@ class Menu extends Component {
                                     <span className="line-right-simple" />
                                     <CardItem
                                       name={name}
+                                      descriptionInTooltip={true}
                                       description={fullDescription}
                                       image={image && image.length > 0 ? image[0].url : undefined} type={product_type.SIMPLE} />
                                   </div>
