@@ -1,59 +1,78 @@
-.card-item-content {
+.column {
   display: flex;
-  justify-content: flex-start;
-  align-content: center;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 50px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin: 5px;
-  position: relative;
-  z-index: 1;
-  background-color: #fff; }
-  .card-item-content img {
-    width: 50px; }
-  .card-item-content .actions {
+  position: relative; }
+  .column .line-right {
     position: absolute;
-    right: 0;
-    top: 0;
-    padding: 7px 2px; }
-    .card-item-content .actions:hover {
-      cursor: pointer;
-      transform: scale(1.2); }
-  .card-item-content .card-item-info {
+    border-left: 1px solid #ccc;
     height: 100%;
-    width: calc(100% - 50px);
-    padding: 0 5px;
-    overflow: hidden;
-    cursor: pointer; }
-    .card-item-content .card-item-info .name {
-      font-size: 14px;
+    left: 0; }
+  .column:first-child .line-right {
+    height: 50%;
+    bottom: 0; }
+  .column:first-child:last-child .line-right {
+    border: 0; }
+  .column:last-child .line-right {
+    height: 50%;
+    top: 0; }
+  .column .card-item-content {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    position: relative;
+    z-index: 1;
+    background-color: #fff; }
+    .column .card-item-content img {
+      width: 50px; }
+    .column .card-item-content .actions {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 7px 2px; }
+      .column .card-item-content .actions:hover {
+        cursor: pointer;
+        transform: scale(1.2); }
+    .column .card-item-content .card-item-info {
+      height: 100%;
+      width: calc(100% - 50px);
+      padding: 0 5px;
       overflow: hidden;
-      text-overflow: ellipsis; }
-    .card-item-content .card-item-info .description {
-      color: #888; }
-    .card-item-content .card-item-info.category {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-between; }
-      .card-item-content .card-item-info.category .description {
-        align-self: flex-end;
-        font-size: 12px; }
-    .card-item-content .card-item-info.menu-item, .card-item-content .card-item-info.simple {
-      overflow: hidden; }
-      .card-item-content .card-item-info.menu-item .description, .card-item-content .card-item-info.simple .description {
-        color: #888;
-        font-size: 10px; }
-    .card-item-content .card-item-info.choosable {
-      display: flex;
-      flex-direction: column-reverse;
-      justify-content: flex-end; }
-      .card-item-content .card-item-info.choosable .name {
-        white-space: normal; }
-      .card-item-content .card-item-info.choosable .description {
-        align-self: flex-end;
-        font-size: 12px; }
+      cursor: pointer; }
+      .column .card-item-content .card-item-info .name {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .column .card-item-content .card-item-info .description {
+        color: #888; }
+      .column .card-item-content .card-item-info.category {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between; }
+        .column .card-item-content .card-item-info.category .description {
+          align-self: flex-end;
+          font-size: 12px; }
+      .column .card-item-content .card-item-info.menu-item, .column .card-item-content .card-item-info.simple {
+        overflow: hidden; }
+        .column .card-item-content .card-item-info.menu-item .description, .column .card-item-content .card-item-info.simple .description {
+          color: #888;
+          font-size: 10px; }
+      .column .card-item-content .card-item-info.choosable {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end; }
+        .column .card-item-content .card-item-info.choosable .name {
+          white-space: normal; }
+        .column .card-item-content .card-item-info.choosable .description {
+          align-self: flex-end;
+          font-size: 12px; }
 
 .tooltip-card-item {
   width: 220px; }

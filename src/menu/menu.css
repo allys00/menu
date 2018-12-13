@@ -1,3 +1,14 @@
+.menu-container .table {
+  display: flex; }
+  .menu-container .table ul {
+    list-style: none;
+    padding: 0;
+    width: 25%; }
+  .menu-container .table li {
+    min-height: 82px; }
+  .menu-container .table .menuItensList {
+    height: fit-content; }
+
 .menu-container .line {
   width: 50%;
   height: 1px;
@@ -8,110 +19,3 @@
   .menu-container .line.right {
     left: unset;
     right: 0; }
-
-.menu-container .table {
-  display: block;
-  height: calc(100vh - 70px);
-  overflow: auto; }
-  .menu-container .table table {
-    width: 100%; }
-    .menu-container .table table tr {
-      display: flex;
-      border-bottom: 1px solid #ccc; }
-      .menu-container .table table tr .column {
-        display: flex;
-        position: relative;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        width: 25%;
-        min-width: 225px; }
-      .menu-container .table table tr .row {
-        display: flex;
-        flex-direction: row; }
-      .menu-container .table table tr .loading {
-        width: 75%; }
-        .menu-container .table table tr .loading .column {
-          width: 33%; }
-          .menu-container .table table tr .loading .column :first-child {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center; }
-            .menu-container .table table tr .loading .column :first-child .css-19bon8n {
-              margin-bottom: 5px; }
-      .menu-container .table table tr .menuItems {
-        display: flex;
-        flex-direction: row;
-        transition: 1s; }
-        .menu-container .table table tr .menuItems .line-right {
-          position: absolute;
-          border-left: 1px solid #ccc;
-          height: 100%;
-          left: 0; }
-        .menu-container .table table tr .menuItems:first-child .line-right {
-          height: 50%;
-          bottom: 0; }
-        .menu-container .table table tr .menuItems:last-child .line-right {
-          height: 50%;
-          top: 0; }
-        .menu-container .table table tr .menuItems .column {
-          width: 33%; }
-    .menu-container .table table .chooses {
-      width: 66% !important; }
-      .menu-container .table table .chooses .choose-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        position: relative;
-        width: 100%; }
-        .menu-container .table table .chooses .choose-container .choose-item {
-          width: 50%;
-          display: flex;
-          justify-content: center; }
-        .menu-container .table table .chooses .choose-container .line {
-          width: 50%; }
-          .menu-container .table table .chooses .choose-container .line.right {
-            right: unset; }
-        .menu-container .table table .chooses .choose-container .line-right {
-          position: absolute;
-          border-left: 1px solid #ccc;
-          height: 100% !important;
-          left: 0; }
-        .menu-container .table table .chooses .choose-container:first-child .line-right {
-          height: 50% !important;
-          bottom: 0;
-          top: unset; }
-        .menu-container .table table .chooses .choose-container:first-child:last-child .line-right {
-          display: none; }
-        .menu-container .table table .chooses .choose-container:last-child .line-right {
-          height: 50% !important;
-          top: 0;
-          bottom: unset; }
-    .menu-container .table table .simples {
-      position: relative;
-      width: 50% !important; }
-      .menu-container .table table .simples .simple-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        position: relative; }
-        .menu-container .table table .simples .simple-item .line {
-          width: 50%; }
-        .menu-container .table table .simples .simple-item .line-right-simple {
-          position: absolute;
-          border-left: 1px solid #ccc;
-          height: 100% !important;
-          left: 0; }
-        .menu-container .table table .simples .simple-item:first-child .line-right-simple {
-          height: 50% !important;
-          bottom: 0;
-          top: unset; }
-        .menu-container .table table .simples .simple-item:first-child:last-child .line-right-simple {
-          display: none; }
-        .menu-container .table table .simples .simple-item:last-child .line-right-simple {
-          height: 50% !important;
-          top: 0;
-          bottom: unset; }

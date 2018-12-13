@@ -17,4 +17,5 @@ export const product_type = {
     CHOOSABLE: 'choosable',
     SIMPLE: 'simple',
     MENU_ITEM: 'menu-item',
+    CATEGORY: 'category'
 };

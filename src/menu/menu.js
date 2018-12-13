@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
-import Skeleton from "react-loading-skeleton";
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+
 
 import CardItem from './cardItem/cardItem';
 import HeaderTable from './headerTable/headerTable';
 import { getRestaurant, dismemberCategory, changeOpenedCategories } from './menu.actions';
+import { product_type } from '../utils/constants';
+import FakeCard from './fakeCard/fakeCard'
 
 
 import './menu.css';
-import { product_type } from '../utils/constants';
+
 
 class Menu extends Component {
 
@@ -28,6 +31,8 @@ class Menu extends Component {
     }
   }
 
+
+
   render() {
     const { menu } = this.props;
     const { openedCategories, loadingGetRestaurant } = menu;
@@ -37,107 +42,118 @@ class Menu extends Component {
       <div className="menu-container">
         <HeaderTable />
         <div className="table">
-          <table>
-            <tbody>
-              {openedCategories.map(({ category, menuItems, isOpen, isLoading }, index) => (
-                <tr key={index} >
-                  <td className="column">
-                    {(isOpen && !isLoading) && <div className="line right"></div>}
+          <DragDropContext onDragEnd={console.log}>
+            <Droppable droppableId="category">
+              {(provided, snapshot) => (
+                <ul className="categoryList" ref={provided.innerRef} key={'categoryList'}>
+                  {openedCategories.map(({ category, menuItems, isOpen, isLoading }, index) => (
                     <CardItem
-                      key={index}
-                      name={category.name}
+                      index={index}
+                      isOpen={isOpen}
+                      isLoading={isLoading}
                       onClick={() => this.handleCategory(openedCategories[index])}
-                      style={isOpen ? { boxShadow: '-3px 3px 5px #ccc' } : {}}
+                      subItems={menuItems}
+                      type={product_type.CATEGORY}
                       description={`Cod: ${category.numericalId}`}
-                      image={category.image ? category.image[0].url : undefined} type="category" />
-                  </td>
-                  {isOpen && (isLoading ? (
-                    <td className="row loading">
-                      <div className="column">
-                        <Skeleton count={3} width={200} />
+                      name={category.name}
+                      image={category.image} />
+                  )
+                  )}
+                </ul>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <ul className="menuItensList" key={'menuItensList'} >
+            {openedCategories.map(({ category, menuItems, isOpen, isLoading }, indexCategory) => {
+              return isOpen && menuItems.length > 0 ?
+                <DragDropContext onDragEnd={console.log}>
+                  <Droppable droppableId={product_type.MENU_ITEM}>
+                    {(provided, snapshot) => (
+                      <div ref={provided.innerRef}>
+                        {menuItems.map(({ name, image, products }, indexMenuItem) => (
+                          <CardItem
+                            index={indexMenuItem}
+                            isOpen={isOpen}
+                            isLoading={isLoading}
+                            onClick={console.log}
+                            subItems={products}
+                            type={product_type.MENU_ITEM}
+                            name={name}
+                            image={image} />
+                        ))}
                       </div>
-                      <div className="column">
-                        <Skeleton count={3} width={200} />
-                      </div>
-                      <div className="column">
-                        <Skeleton count={3} width={200} />
-                      </div>
-                    </td>
-                  ) :
-
-                    (<td colSpan="3" style={{ width: "75%" }} >
-                      {menuItems.map(({ name, image, fullDescription, products }, indexMenuItems) => (
-                        <div className="menuItems" key={indexMenuItems} >
-                          <div className="column items">
-                            <div className="line"></div>
-                            {products.length > 0 &&
-                              <div className="line right"></div>
-                            }
-                            <span className="line-right" />
-                            <div
-                              data-for={name}
-                              data-tip={`<p>${fullDescription ? fullDescription : 'Sem descrição'}</p>`}>
+                    )}
+                  </Droppable>
+                </DragDropContext> :
+                <FakeCard key={`${1}-${indexCategory}`} isLoading={isLoading} />
+            })}
+          </ul>
+          <ul className="chooseItemsList" key={'chooseItemsList'}>
+            {openedCategories.map(({ category, menuItems, isOpen, isLoading }, indexCategory) => {
+              return isOpen && menuItems.length > 0 ?
+                menuItems.map(({ name, products }, indexMenuItems) => {
+                  return products.length > 0 ?
+                    <DragDropContext onDragEnd={console.log}>
+                      <Droppable droppableId={product_type.CHOOSABLE}>
+                        {(provided, snapshot) => (
+                          <div ref={provided.innerRef}>
+                            {products.map(({ name, image, products, maximumChoices, minimumChoices }, indexChoosable) => (
                               <CardItem
-                                loading={true}
+                                index={indexChoosable}
+                                isOpen={isOpen}
+                                isLoading={isLoading}
+                                onClick={console.log}
+                                subItems={products}
+                                type={product_type.CHOOSABLE}
                                 name={name}
-                                image={image && image.length > 0 ? image[0].url : undefined} type={product_type.MENU_ITEM} />
-                            </div>
-                            <ReactTooltip
-                              id={name}
-                              place="bottom"
-                              effect="solid"
-                              html={true}
-                              className="tooltip-card-item " />
-                          </div>
-                          <div className="column chooses">
-                            {products.map(({ name, image, products, maximumChoices, minimumChoices }, indexChoose) => (
-                              <div
-                                key={indexChoose}
-                                className="choose-container">
-                                <div className="line"></div>
-
-                                <span className="line-right" />
-                                <div className="choose-item">
-                                  <CardItem
-                                    name={name}
-                                    description={`min: ${minimumChoices} - max: ${maximumChoices}`}
-                                    image={image && image.length > 0 ? image[0].url : undefined} type={product_type.CHOOSABLE} />
-                                </div>
-                                <div className="column simples">
-                                  {products.map(({ name, image, fullDescription }, indexSimple) => (
-                                    <div className="simple-item" key={indexSimple}>
-                                      <div className="line"></div>
-                                      <span className="line-right-simple" />
-                                      <div data-for={name}
-                                        data-tip={`<p>${fullDescription ? fullDescription : 'Sem descrição'}</p>`}>
-                                        <CardItem
-                                          name={name}
-                                          descriptionInTooltip={true}
-                                          image={image && image.length > 0 ? image[0].url : undefined} type={product_type.SIMPLE} />
-                                      </div>
-                                      <ReactTooltip
-                                        id={name}
-                                        place="bottom"
-                                        effect="solid"
-                                        html={true}
-                                        className="tooltip-card-item " />
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
+                                image={image}
+                                description={`min: ${minimumChoices} - max: ${maximumChoices}`}
+                              />
                             ))}
                           </div>
-                        </div>
-                      ))}
-
-                    </td>))
-                  }
-                </tr>)
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
+                        )}
+                      </Droppable>
+                    </DragDropContext> :
+                    <FakeCard index={`${name}-${indexMenuItems}`} isLoading={isLoading} />
+                }) :
+                <FakeCard index={`${2}-${indexCategory}`} isLoading={isLoading} />
+            })}
+          </ul>
+          <ul className="simpleItemsList" >
+            {openedCategories.map(({ menuItems, isOpen, isLoading }, index) => {
+              return isOpen && menuItems.length > 0 ?
+                menuItems.map(({ products }) => {
+                  return products.length > 0 ?
+                    products.map(({ products }) => (
+                      <DragDropContext onDragEnd={console.log}>
+                        <Droppable droppableId={product_type.SIMPLE}>
+                          {(provided, snapshot) => (
+                            <div ref={provided.innerRef}>
+                              {products.map(({ name, image, products, fullDescription }, index) => (
+                                <CardItem
+                                  index={index}
+                                  isOpen={isOpen}
+                                  isLoading={isLoading}
+                                  onClick={console.log}
+                                  subItems={products}
+                                  type={product_type.SIMPLE}
+                                  name={name}
+                                  image={image}
+                                  description={fullDescription}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </Droppable>
+                      </DragDropContext>))
+                    :
+                    <FakeCard index={index} isLoading={isLoading} />
+                }) :
+                <FakeCard index={index} isLoading={isLoading} />
+            })}
+          </ul>
+        </div >
+      </div >
   }
 }
 

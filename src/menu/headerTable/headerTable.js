@@ -2,11 +2,11 @@ import React from 'react';
 import './headerTable.css'
 
 const headerTable = () => (
-    <ul className="title">
-        <li>Categorias</li>
-        <li>Itens do Menu</li>
-        <li>Opções</li>
-        <li>Componentes</li>
+    <ul className="titles">
+        <li className="title">Categorias</li>
+        <li className="title">Itens do Menu</li>
+        <li className="title">Opções</li>
+        <li className="title">Componentes</li>
     </ul>
 )
 

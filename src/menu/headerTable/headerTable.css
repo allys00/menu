@@ -1,4 +1,4 @@
-ul {
+.titles {
   display: flex;
   position: relative;
   justify-content: space-around;
@@ -8,7 +8,7 @@ ul {
   padding: 20px 0;
   margin: 0;
   border-bottom: 2px solid #ccc; }
-  ul li {
+  .titles .title {
     width: 25%;
     min-width: 230px;
     text-align: center; }
