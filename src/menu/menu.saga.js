@@ -13,7 +13,7 @@ function* getRestaurant() {
         category: category,
         menuItems: [],
         isLoading: false,
-        isOpen: false,
+        isExpanded: false,
         isLoaded: false,
       })
     }
@@ -36,19 +36,62 @@ function* changeOpenedCategory({ payload }) {
   yield put({ type: actions.CHANGE_OPENED_CATEGORIES, payload: newOpenedCategories });
 }
 
+function* changeExpandedCategory({ payload }) {
+  try {
+    let { openedCategories } = yield select(({ menu }) => menu)
+    const index = openedCategories.findIndex(({ category }) => category.id === payload);
+    if (index !== -1) {
+      yield call(changeOpenedCategory, { payload: { key: 'isExpanded', id: payload, value: !openedCategories[index].isExpanded } })
+    } else {
+      console.error('Item não encontrado');
+    }
+    console.log(index)
+
+  } catch (error) {
+
+  }
+}
+
+function* changeExpandedMenuItem({ payload }) {
+  try {
+    const { index_category, index_menuItem } = payload
+    let { openedCategories } = yield select(({ menu }) => menu)
+    let category = { ...openedCategories[index_category] }
+    let menuItem = category.menuItems[index_menuItem]
+    menuItem.isExpanded = !menuItem.isExpanded
+    return yield call(changeOpenedCategory, { payload: { key: 'menuItems', id: category.category.id, value: category.menuItems } })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function* changeExpandedChoose({ payload }) {
+  try {
+    const { index_category, index_menuItem, index_choose } = payload
+    let { openedCategories } = yield select(({ menu }) => menu)
+    let category = { ...openedCategories[index_category] }
+    let choose = category.menuItems[index_menuItem].products[index_choose]
+    choose.isExpanded = !choose.isExpanded
+    return yield call(changeOpenedCategory, { payload: { key: 'menuItems', id: category.category.id, value: category.menuItems } })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 
 function* dismemberCategory({ payload }) {
   try {
-    yield call(changeOpenedCategory, { payload: { key: 'isOpen', id: payload, value: true } })
+    yield call(changeOpenedCategory, { payload: { key: 'isExpanded', id: payload, value: true } })
     yield call(changeOpenedCategory, { payload: { key: 'isLoading', id: payload, value: true } })
     const { allProducts } = yield select(({ menu }) => menu);
     let menuItems = allProducts.filter(product => product.category === payload);
-    console.log(menuItems)
     for (let menuItem of menuItems) {
+      menuItem.isExpanded = menuItem.products.length <= 1
       if (menuItem && menuItem.products.length > 0) {
         const response = yield all(menuItem.products.map(choosable_id => call(Get, choosable_id)));
         menuItem.products = response.map(res => res.data)
         for (let chooseItem of menuItem.products) {
+          chooseItem.isExpanded = chooseItem.isExpanded = chooseItem.products.length <= 1
           const response = yield all(chooseItem.products.map(simple_id => call(Get, simple_id)));
           chooseItem.products = response.map(res => res.data)
         }
@@ -70,6 +113,8 @@ export default function* StatisticsSaga() {
     yield takeEvery(actions.ASYNC_GET_RESTAURANT, getRestaurant),
     yield takeEvery(actions.ASYNC_DISMEMBER_CATEGORY, dismemberCategory),
     yield takeEvery(actions.ASYNC_CHANGE_OPENED_CATEGORIES, changeOpenedCategory),
-
+    yield takeEvery(actions.CHANGE_EXPANDED_CATEGORY, changeExpandedCategory),
+    yield takeEvery(actions.CHANGE_EXPANDED_MENU_ITEM, changeExpandedMenuItem),
+    yield takeEvery(actions.CHANGE_EXPANDED_CHOOSE, changeExpandedChoose),
   ]);
 }

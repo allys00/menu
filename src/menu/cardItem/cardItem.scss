@@ -4,25 +4,32 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    .line-right {
+    .expanded {
+        position: absolute;
+        right: -10px;
+        z-index: 2;
+        background: white;
+        cursor: pointer;
+    }
+    .line-vertical {
         position: absolute;
         border-left: 1px solid #ccc;
         height: 100%;
         left: 0;
     }
     &:first-child {
-        .line-right {
+        .line-vertical {
             height: 50%;
             bottom: 0;
         }
         &:last-child {
-            .line-right {
+            .line-vertical {
                 border: 0;
             }
         }
     }
     &:last-child {
-        .line-right {
+        .line-vertical {
             height: 50%;
             top: 0;
         }
@@ -42,6 +49,12 @@
         background-color: #fff;
         img {
             width: 50px;
+        }
+        &.isOver {
+            img,
+            .card-item-info {
+                opacity: 0.2;
+            }
         }
         .actions {
             position: absolute;
