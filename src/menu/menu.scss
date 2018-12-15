@@ -1,4 +1,5 @@
 .menu-container {
+    min-width: 100px;
     .table {
         display: flex;
         ul {
@@ -25,4 +26,16 @@
             right: 0;
         }
     }
+}
+
+.css-19bon8n{
+    width: 232px !important;
+}
+
+.loadingContent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

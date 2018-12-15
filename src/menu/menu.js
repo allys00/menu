@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import LoadingGif from '../assets/imgs/loading.gif'
 
 
 import CardItem from './cardItem/cardItem';
@@ -20,7 +21,6 @@ import FakeCard from './fakeCard/fakeCard'
 
 
 import './menu.css';
-import CardAddItem from './cardAddItem/cardAddItem';
 
 
 class Menu extends Component {
@@ -50,7 +50,9 @@ class Menu extends Component {
     const { openedCategories, loadingGetRestaurant } = menu;
 
     return loadingGetRestaurant ?
-      <p>...Loading</p> :
+      <div className="loadingContent">
+        <img src={LoadingGif} alt="loading" />
+      </div> :
       <div className="menu-container">
         <HeaderTable />
         <div className="table">
@@ -108,13 +110,11 @@ class Menu extends Component {
                             name={name}
                             image={image} />
                         ))}
-                        <CardAddItem />
                       </div>
                     )}
                   </Droppable>
                 </DragDropContext> :
-                categoryIsExpanded ? <p>New Item</p> :
-                  <FakeCard key={`${1}-${indexCategory}`} isLoading={categoryIsExpanded && isLoading} />
+                <FakeCard key={`${1}-${indexCategory}`} isLoading={categoryIsExpanded && isLoading} expanded={categoryIsExpanded} />
             })}
           </ul>
           <ul className="chooseItemsList" key={'chooseItemsList'}>
