@@ -45,10 +45,8 @@ function* changeExpandedCategory({ payload }) {
     } else {
       console.error('Item não encontrado');
     }
-    console.log(index)
-
   } catch (error) {
-
+    console.error(error)
   }
 }
 
@@ -83,7 +81,6 @@ function* moveItem({ payload }) {
   const { event, coord } = payload;
   const { destination, source } = event;
   const { type, indexCategory, indexMenuItem, indexChoosable } = coord;
-  console.log(coord)
   try {
     let { openedCategories } = yield select(({ menu }) => menu);
     if (type === product_type.CATEGORY) {

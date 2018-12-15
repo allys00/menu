@@ -94,7 +94,6 @@ class Menu extends Component {
                       <div ref={provided.innerRef} style={this.getListStyle(
                         snapshot.isDraggingOver,
                       )}>
-                        {console.log(snapshot)}
                         {menuItems.map(({ id, name, image, products, isExpanded }, indexMenuItem) => (
                           <CardItem
                             index={indexMenuItem}
@@ -104,7 +103,6 @@ class Menu extends Component {
                             categoryIsExpanded={categoryIsExpanded}
                             isExpanded={isExpanded}
                             isLoading={isLoading}
-                            onClick={console.log}
                             subItems={products}
                             type={product_type.MENU_ITEM}
                             name={name}
@@ -140,7 +138,6 @@ class Menu extends Component {
                                 isExpanded={isExpanded}
                                 onExpanded={() => changeExpandedChoose(indexCategory, indexMenuItem, indexChoosable)}
                                 isLoading={isLoading}
-                                onClick={console.log}
                                 subItems={products}
                                 type={product_type.CHOOSABLE}
                                 name={name}
@@ -165,7 +162,7 @@ class Menu extends Component {
                   const menuItemIsExpanded = menuItems[indexMenuItem].isExpanded;
                   return products.length > 0 && (menuItemIsExpanded || products.length === 1) ?
                     products.map(({ products, isExpanded }, indexChoosable) => {
-                      return (isExpanded || products.length === 1) ?
+                      return isExpanded && products.length === 1 ?
                         <DragDropContext
                           onDragEnd={(e) => endDragDrop(e, { type: product_type.SIMPLE, indexCategory, indexMenuItem, indexChoosable })}>
                           <Droppable droppableId={product_type.SIMPLE}>
@@ -180,7 +177,6 @@ class Menu extends Component {
                                     isDragging={snapshot.isDraggingOver}
                                     coord={`${indexCategory}-${indexMenuItem}-${indexChoosable}-${index}`}
                                     isLoading={isLoading}
-                                    onClick={console.log}
                                     subItems={products}
                                     type={product_type.SIMPLE}
                                     name={name}
