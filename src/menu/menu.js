@@ -12,13 +12,15 @@ import {
   changeOpenedCategories,
   changeExpandedCategory,
   changeExpandedMenuItem,
-  changeExpandedChoose
+  changeExpandedChoose,
+  endDragDrop
 } from './menu.actions';
 import { product_type } from '../utils/constants';
 import FakeCard from './fakeCard/fakeCard'
 
 
 import './menu.css';
+import CardAddItem from './cardAddItem/cardAddItem';
 
 
 class Menu extends Component {
@@ -26,6 +28,7 @@ class Menu extends Component {
   componentDidMount() {
     this.props.getRestaurant()
   }
+
 
   handleCategory({ category, isExpanded, isLoaded }) {
     const { changeOpenedCategories, dismemberCategory } = this.props;
@@ -38,28 +41,32 @@ class Menu extends Component {
     }
   }
 
-
+  getListStyle = (isDraggingOver) => ({
+    boxShadow: isDraggingOver ? '1px 1px 5px #555' : '',
+  });
 
   render() {
-    const { menu, changeExpandedCategory, changeExpandedMenuItem, changeExpandedChoose } = this.props;
+    const { menu, changeExpandedCategory, changeExpandedMenuItem, changeExpandedChoose, endDragDrop } = this.props;
     const { openedCategories, loadingGetRestaurant } = menu;
-    openedCategories.sort((a, b) => a.category.order > b.category.order ? 1 : a.category.order < b.category.order ? -1 : 0)
-
-    console.log('render')
-
 
     return loadingGetRestaurant ?
       <p>...Loading</p> :
       <div className="menu-container">
         <HeaderTable />
         <div className="table">
-          <DragDropContext onDragEnd={console.log}>
+          <DragDropContext onDragEnd={(e) => endDragDrop(e, { type: product_type.CATEGORY })}>
             <Droppable droppableId="category">
               {(provided, snapshot) => (
-                <ul className="categoryList" ref={provided.innerRef} key={'categoryList'}>
+                <ul className="categoryList"
+                  ref={provided.innerRef}
+                  style={this.getListStyle(
+                    snapshot.isDraggingOver,
+                  )}
+                  key={'categoryList'}>
                   {openedCategories.map(({ category, menuItems, isExpanded, isLoading }, index) => (
                     <CardItem
                       index={index}
+                      coord={`-${index}`}
                       isExpanded={isExpanded}
                       isLoading={isLoading}
                       onClick={() => this.handleCategory(openedCategories[index])}
@@ -79,14 +86,19 @@ class Menu extends Component {
             {openedCategories.map(({ menuItems, isLoading }, indexCategory) => {
               const categoryIsExpanded = openedCategories[indexCategory].isExpanded;
               return categoryIsExpanded && menuItems.length > 0 ?
-                <DragDropContext onDragEnd={console.log}>
+                <DragDropContext onDragEnd={(e) => endDragDrop(e, { type: product_type.MENU_ITEM, indexCategory })}>
                   <Droppable droppableId={product_type.MENU_ITEM}>
                     {(provided, snapshot) => (
-                      <div ref={provided.innerRef}>
+                      <div ref={provided.innerRef} style={this.getListStyle(
+                        snapshot.isDraggingOver,
+                      )}>
+                        {console.log(snapshot)}
                         {menuItems.map(({ id, name, image, products, isExpanded }, indexMenuItem) => (
                           <CardItem
                             index={indexMenuItem}
+                            isDragging={snapshot.isDraggingOver}
                             onExpanded={() => changeExpandedMenuItem(indexCategory, indexMenuItem)}
+                            coord={`${indexCategory}-${indexMenuItem}`}
                             categoryIsExpanded={categoryIsExpanded}
                             isExpanded={isExpanded}
                             isLoading={isLoading}
@@ -96,30 +108,37 @@ class Menu extends Component {
                             name={name}
                             image={image} />
                         ))}
+                        <CardAddItem />
                       </div>
                     )}
                   </Droppable>
                 </DragDropContext> :
-                <FakeCard key={`${1}-${indexCategory}`} isLoading={categoryIsExpanded && isLoading} />
+                categoryIsExpanded ? <p>New Item</p> :
+                  <FakeCard key={`${1}-${indexCategory}`} isLoading={categoryIsExpanded && isLoading} />
             })}
           </ul>
           <ul className="chooseItemsList" key={'chooseItemsList'}>
-            {openedCategories.map(({ menuItems, isExpanded, isLoading }, indexCategory) => {
+            {openedCategories.map(({ menuItems, isLoading }, indexCategory) => {
               const categoryIsExpanded = openedCategories[indexCategory].isExpanded;
               return categoryIsExpanded && menuItems.length > 0 ?
-                menuItems.map(({ name, products }, indexMenuItems) => {
-                  const menuItemIsExpanded = menuItems[indexMenuItems].isExpanded;
+                menuItems.map(({ name, products }, indexMenuItem) => {
+                  const menuItemIsExpanded = menuItems[indexMenuItem].isExpanded;
                   return products.length > 0 && (menuItemIsExpanded || products.length === 1) ?
-                    <DragDropContext onDragEnd={console.log}>
+                    <DragDropContext onDragEnd={(e) => endDragDrop(e, { type: product_type.CHOOSABLE, indexCategory, indexMenuItem })}>
                       <Droppable droppableId={product_type.CHOOSABLE}>
                         {(provided, snapshot) => (
-                          <div ref={provided.innerRef}>
+                          <div ref={provided.innerRef}
+                            style={this.getListStyle(
+                              snapshot.isDraggingOver,
+                            )}>
                             {products.map(({ name, image, products, maximumChoices, minimumChoices, isExpanded }, indexChoosable) => (
                               <CardItem
                                 index={indexChoosable}
+                                coord={`${indexCategory}-${indexMenuItem}-${indexChoosable}`}
+                                isDragging={snapshot.isDraggingOver}
                                 categoryIsExpanded={categoryIsExpanded}
                                 isExpanded={isExpanded}
-                                onExpanded={() => changeExpandedChoose(indexCategory, indexMenuItems, indexChoosable)}
+                                onExpanded={() => changeExpandedChoose(indexCategory, indexMenuItem, indexChoosable)}
                                 isLoading={isLoading}
                                 onClick={console.log}
                                 subItems={products}
@@ -133,7 +152,7 @@ class Menu extends Component {
                         )}
                       </Droppable>
                     </DragDropContext> :
-                    <FakeCard index={`${name}-${indexMenuItems}`} isLoading={categoryIsExpanded && isLoading} />
+                    <FakeCard index={`${name}-${indexMenuItem}`} isLoading={categoryIsExpanded && isLoading} />
                 }) :
                 <FakeCard index={`${2}-${indexCategory}`} isLoading={categoryIsExpanded && isLoading} />
             })}
@@ -147,14 +166,19 @@ class Menu extends Component {
                   return products.length > 0 && (menuItemIsExpanded || products.length === 1) ?
                     products.map(({ products, isExpanded }, indexChoosable) => {
                       return (isExpanded || products.length === 1) ?
-                        <DragDropContext onDragEnd={console.log}>
+                        <DragDropContext
+                          onDragEnd={(e) => endDragDrop(e, { type: product_type.SIMPLE, indexCategory, indexMenuItem, indexChoosable })}>
                           <Droppable droppableId={product_type.SIMPLE}>
                             {(provided, snapshot) => (
-                              <div ref={provided.innerRef}>
+                              <div ref={provided.innerRef} style={this.getListStyle(
+                                snapshot.isDraggingOver,
+                              )}>
                                 {products.map(({ name, image, products, fullDescription }, index) => (
                                   <CardItem
                                     categoryIsExpanded={categoryIsExpanded}
                                     index={index}
+                                    isDragging={snapshot.isDraggingOver}
+                                    coord={`${indexCategory}-${indexMenuItem}-${indexChoosable}-${index}`}
                                     isLoading={isLoading}
                                     onClick={console.log}
                                     subItems={products}
@@ -189,5 +213,6 @@ export default connect(mapStateToProps, {
   changeOpenedCategories,
   changeExpandedCategory,
   changeExpandedMenuItem,
-  changeExpandedChoose
+  changeExpandedChoose,
+  endDragDrop
 })(Menu);

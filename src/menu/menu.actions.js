@@ -28,3 +28,8 @@ export const changeExpandedChoose = (index_category, index_menuItem, index_choos
     type: actions.CHANGE_EXPANDED_CHOOSE,
     payload: { index_category, index_menuItem, index_choose }
 })
+
+export const endDragDrop = (event, coord) => ({
+    type: actions.MOVE_ITEM,
+    payload: { event, coord }
+})

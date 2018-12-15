@@ -49,11 +49,16 @@
         background-color: #fff;
         img {
             width: 50px;
+            &.trash{
+                width: 30px;
+            }
         }
         &.isOver {
-            img,
-            .card-item-info {
-                opacity: 0.2;
+            box-shadow: 0px 0px 5px red;
+            .card-item-content {
+                display: flex;
+                align-items: center;
+                color: red;
             }
         }
         .actions {

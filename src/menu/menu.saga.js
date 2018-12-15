@@ -1,5 +1,5 @@
 import { all, takeEvery, call, put, select } from 'redux-saga/effects';
-import { actions, urls } from '../utils/constants';
+import { actions, urls, product_type } from '../utils/constants';
 import { Get } from '../utils/api';
 
 function* getRestaurant() {
@@ -52,6 +52,7 @@ function* changeExpandedCategory({ payload }) {
   }
 }
 
+
 function* changeExpandedMenuItem({ payload }) {
   try {
     const { index_category, index_menuItem } = payload
@@ -68,7 +69,7 @@ function* changeExpandedMenuItem({ payload }) {
 function* changeExpandedChoose({ payload }) {
   try {
     const { index_category, index_menuItem, index_choose } = payload
-    let { openedCategories } = yield select(({ menu }) => menu)
+    let { openedCategories } = yield select(({ menu }) => menu);
     let category = { ...openedCategories[index_category] }
     let choose = category.menuItems[index_menuItem].products[index_choose]
     choose.isExpanded = !choose.isExpanded
@@ -78,6 +79,43 @@ function* changeExpandedChoose({ payload }) {
   }
 }
 
+function* moveItem({ payload }) {
+  const { event, coord } = payload;
+  const { destination, source } = event;
+  const { type, indexCategory, indexMenuItem, indexChoosable } = coord;
+  console.log(coord)
+  try {
+    let { openedCategories } = yield select(({ menu }) => menu);
+    if (type === product_type.CATEGORY) {
+      const currentItem = openedCategories[source.index]
+      openedCategories.splice(source.index, 1);
+      if (destination) {
+        openedCategories.splice(destination.index, 0, currentItem);
+      }
+    } else if (type === product_type.MENU_ITEM) {
+      const currentItem = openedCategories[indexCategory].menuItems[source.index]
+      openedCategories[indexCategory].menuItems.splice(source.index, 1);
+      if (destination) {
+        openedCategories[indexCategory].menuItems.splice(destination.index, 0, currentItem);
+      }
+    } else if (type === product_type.CHOOSABLE) {
+      const currentItem = openedCategories[indexCategory].menuItems[indexMenuItem].products[source.index]
+      openedCategories[indexCategory].menuItems[indexMenuItem].products.splice(source.index, 1);
+      if (destination) {
+        openedCategories[indexCategory].menuItems[indexMenuItem].products.splice(destination.index, 0, currentItem);
+      }
+    } else if (type === product_type.SIMPLE) {
+      const currentItem = openedCategories[indexCategory].menuItems[indexMenuItem].products[indexChoosable].products[source.index]
+      openedCategories[indexCategory].menuItems[indexMenuItem].products[indexChoosable].products.splice(source.index, 1);
+      if (destination) {
+        openedCategories[indexCategory].menuItems[indexMenuItem].products[indexChoosable].products.splice(destination.index, 0, currentItem);
+      }
+    }
+    yield put({ type: actions.CHANGE_OPENED_CATEGORIES, payload: openedCategories });
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 function* dismemberCategory({ payload }) {
   try {
@@ -116,5 +154,6 @@ export default function* StatisticsSaga() {
     yield takeEvery(actions.CHANGE_EXPANDED_CATEGORY, changeExpandedCategory),
     yield takeEvery(actions.CHANGE_EXPANDED_MENU_ITEM, changeExpandedMenuItem),
     yield takeEvery(actions.CHANGE_EXPANDED_CHOOSE, changeExpandedChoose),
+    yield takeEvery(actions.MOVE_ITEM, moveItem)
   ]);
 }

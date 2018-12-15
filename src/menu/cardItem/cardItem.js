@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import Placeholder from '../../assets/imgs/placeholder.png';
+import Trash from '../../assets/imgs/trash.png';
 import IconSvg from '../../utils/iconSvg';
 import { product_type } from '../../utils/constants';
 
@@ -33,11 +34,29 @@ const getHeight = (items, type) => {
 
 class CardItem extends Component {
   render() {
-    const { index, categoryIsExpanded, isExpanded, isLoading, onClick, subItems, name, image, type, description, onExpanded } = this.props;
+    const {
+      index,
+      coord,
+      categoryIsExpanded,
+      isExpanded,
+      isLoading,
+      onClick,
+      subItems,
+      name,
+      image,
+      type,
+      description,
+      onExpanded,
+      isDragging
+    } = this.props;
+
     return (
-      <Draggable key={index} draggableId={`${type}-${index}`} index={index}>
+      <Draggable key={index} draggableId={coord} index={index}>
         {(provided, snapshot) => {
-          console.log(snapshot); return (
+          const isDraggingMode = !isDragging && !snapshot.isDragging
+          const isDraggingOut = snapshot.isDragging && !snapshot.draggingOver
+
+          return (
             <li className="column"
               ref={provided.innerRef}
               {...provided.draggableProps}
@@ -50,28 +69,33 @@ class CardItem extends Component {
                   ...provided.draggableProps.style,
                 }
               }>
-              {!snapshot.isDragging && (isExpanded && !isLoading && type === product_type.CATEGORY) && < div className="line right"></div>}
-              {!snapshot.isDragging && subItems.length > 0 && product_type.CATEGORY !== type && product_type.SIMPLE !== type && <div className="line right"></div>}
-              {!snapshot.isDragging && product_type.CATEGORY !== type && <div className="line"></div>}
-              {!snapshot.isDragging && product_type.CATEGORY !== type && <div className="line-vertical"></div>}
-              {!snapshot.isDragging && (product_type.CATEGORY !== type && subItems.length > 1) &&
+              {isDraggingMode && (isExpanded && !isLoading && type === product_type.CATEGORY) && < div className="line right"></div>}
+              {isDraggingMode && subItems.length > 0 && product_type.CATEGORY !== type && product_type.SIMPLE !== type && <div className="line right"></div>}
+              {isDraggingMode && product_type.CATEGORY !== type && <div className="line"></div>}
+              {isDraggingMode && product_type.CATEGORY !== type && <div className="line-vertical"></div>}
+              {isDraggingMode && (product_type.CATEGORY !== type && subItems.length > 1) &&
                 <div className="expanded" onClick={onExpanded}>
                   <IconSvg name={isExpanded ? 'minimize' : 'add'} width={20} height={20} color="#545454" />
                 </div>}
 
-              <div className={`card-item-content ${snapshot.isDragging && !snapshot.draggingOver ? 'isOver' : ''}`}
-                style={(isExpanded && type === product_type.CATEGORY) ? { boxShadow: '-3px 3px 5px #ccc' } : {}}
-                onClick={onClick}>
-
-                <div className="actions">
-                  <IconSvg name="actions" width={15} height={15} color="#ccc" />
+              {isDraggingOut ?
+                <div className="card-item-content isOver" >
+                  <img src={Trash} alt="item" className="trash" />
+                  <div className={`card-item-info ${type}`}>
+                    <p className="name">Remover Item</p>
+                  </div>
                 </div>
-                <img src={(image && image.length > 0) ? image[0].url : Placeholder} alt="item" />
-                <div className={`card-item-info ${type}`}>
-                  <p className="name">{name}</p>
-                  {description && <p className="description">{description}</p>}
+                :
+                <div className={`card-item-content ${isDraggingOut ? 'isOver' : ''}`}
+                  style={(isExpanded && type === product_type.CATEGORY) ? { boxShadow: '-3px 3px 5px #ccc' } : {}}
+                  onClick={onClick}>
+                  <img src={!isDraggingOut ? (image && image.length > 0) ? image[0].url : Placeholder : Trash} alt="item" />
+                  <div className={`card-item-info ${type}`}>
+                    <p className="name">{isDraggingOut ? 'REMOVER ITEM' : name}</p>
+                    {description && <p className="description">{description}</p>}
+                  </div>
                 </div>
-              </div>
+              }
             </li>
           )
         }}

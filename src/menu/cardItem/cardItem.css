@@ -38,9 +38,14 @@
     background-color: #fff; }
     .column .card-item-content img {
       width: 50px; }
-    .column .card-item-content.isOver img,
-    .column .card-item-content.isOver .card-item-info {
-      opacity: 0.2; }
+      .column .card-item-content img.trash {
+        width: 30px; }
+    .column .card-item-content.isOver {
+      box-shadow: 0px 0px 5px red; }
+      .column .card-item-content.isOver .card-item-content {
+        display: flex;
+        align-items: center;
+        color: red; }
     .column .card-item-content .actions {
       position: absolute;
       right: 0;
